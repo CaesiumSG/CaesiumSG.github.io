@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lee Kuan Yew | Tribute Fan Page</title>
+    <style>
+        /* ==========================================================================
+           CSS Variables & Theming (Singapore National Red & Slate Accents)
+           ========================================================================== */
+        :root {
+            --bg-primary: #f8fafc;
+            --bg-surface: #ffffff;
+            --bg-card: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-muted: #94a3b8;
+            --accent-red: #d11927;
+            --accent-red-hover: #b0131f;
+            --accent-red-light: #fef2f2;
+            --accent-gold: #d97706;
+            --border-color: #e2e8f0;
+            --border-highlight: #fecaca;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 25px -5px rgba(209, 25, 39, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --transition-speed: 0.3s;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #0f172a;
+            --bg-surface: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --text-muted: #64748b;
+            --accent-red: #ef4444;
+            --accent-red-hover: #dc2626;
+            --accent-red-light: #450a0a;
+            --accent-gold: #fbbf24;
+            --border-color: #334155;
+            --border-highlight: #7f1d1d;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* ==========================================================================
+           Base & Global Styles
+           ========================================================================== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           Header & Top Controls
+           ========================================================================== */
+        header {
+            background-color: var(--bg-surface);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color var(--transition-speed) ease, border-color var(--transition-speed) ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-red);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-badge span {
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .theme-toggle-btn {
+            background: var(--accent-red-light);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            padding: 0.55rem 1rem;
+            border-radius: 9999px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent-red);
+            transform: translateY(-1px);
+        }
+
+        /* ==========================================================================
+           Hero Section (Celebrity Name & Photo)
+           ========================================================================== */
+        .hero {
+            padding: 3rem 0 2rem 0;
+            text-align: center;
+        }
+
+        .portrait-frame {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.75rem auto;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, var(--accent-red), var(--accent-gold));
+            box-shadow: var(--shadow-lg);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .portrait-frame:hover {
+            transform: scale(1.03);
+        }
+
+        .portrait-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background-color: var(--bg-surface);
+            display: block;
+        }
+
+        .hero-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-red);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-dates {
+            display: inline-block;
+            background-color: var(--accent-red-light);
+            color: var(--accent-red);
+            padding: 0.25rem 0.85rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 1.25rem;
+            border: 1px solid var(--border-highlight);
+        }
+
+        .hero-tagline {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ==========================================================================
+           Interactive Quote Generator Card
+           ========================================================================== */
+        .interactive-section {
+            margin: 2.5rem 0;
+        }
+
+        .quote-box {
+            background-color: var(--bg-surface);
+            border: 2px solid var(--border-highlight);
+            border-radius: var(--radius-lg);
+            padding: 2.25rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .quote-box::before {
+            content: "“";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 7rem;
+            line-height: 1;
+            font-family: Georgia, serif;
+            color: var(--accent-red);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .quote-header-tag {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent-red);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .quote-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.25rem;
+            min-height: 70px;
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        .quote-author {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .author-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .author-context {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .quote-actions {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            border: none;
+            padding: 0.65rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-red);
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(209, 25, 39, 0.3);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-red-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-red-light);
+            border-color: var(--accent-red);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           Content Section Styles (Bio & Facts)
+           ========================================================================== */
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 1.25rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--accent-red);
+            border-radius: 2px;
+        }
+
+        .bio-section, .facts-section {
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--border-highlight);
+        }
+
+        .bio-content p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .bio-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        .bio-milestones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .milestone-item {
+            background-color: var(--bg-primary);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            border-left: 3px solid var(--accent-red);
+        }
+
+        .milestone-year {
+            font-weight: 800;
+            color: var(--accent-red);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .milestone-desc {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        /* Facts Grid */
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .fact-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .fact-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .fact-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .fact-description {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent-red);
+            color: #ffffff;
+            padding: 0.75rem 1.25rem;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            opacity: 0;
+            transform: translateY(20px);
+            pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================================================
+           Footer
+           ========================================================================== */
+        footer {
+            margin-top: auto;
+            background-color: var(--bg-surface);
+            border-top: 1px solid var(--border-color);
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        footer strong {
+            color: var(--accent-red);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 1.85rem;
+            }
+            .portrait-frame {
+                width: 160px;
+                height: 160px;
+            }
+            .quote-box {
+                padding: 1.5rem;
+            }
+            .quote-text {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header with Theme Toggle -->
+    <header>
+        <div class="container header-content">
+            <div class="logo-badge">
+                🇸🇬 <span>Tribute Page</span>
+            </div>
+            <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle dark mode">
+                <span id="themeIcon">🌙</span>
+                <span id="themeText">Dark Mode</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section: Celebrity Name & Photo -->
+        <section class="hero">
+            <div class="portrait-frame">
+                <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Lee_Kuan_Yew.jpg" 
+                    alt="Portrait of Lee Kuan Yew" 
+                    class="portrait-img"
+                    id="celebrityPhoto"
+                >
+            </div>
+            <h1 class="hero-title">Lee Kuan Yew <span style="font-weight:400; font-size:1.6rem; color:var(--text-secondary);">(李光耀)</span></h1>
+            <div class="hero-subtitle">Founding Father & First Prime Minister of Modern Singapore</div>
+            <div class="hero-dates">16 September 1923 – 23 March 2015</div>
+            <p class="hero-tagline">
+                The visionary statesman who spearheaded Singapore's transformation from a vulnerable third-world island nation into one of the world's most prosperous, safe, and technologically advanced global metropolises.
+            </p>
+        </section>
+
+        <!-- Interactive Feature: Quote & Speech Generator -->
+        <section class="interactive-section">
+            <div class="quote-box">
+                <div class="quote-header-tag">
+                    <span>⚡ Famous Words & Philosophy</span>
+                </div>
+                <div class="quote-text" id="quoteDisplay">
+                    "Even from my sick bed, even if you are going to lower me into the grave and I feel that something is going wrong, I will get up."
+                </div>
+                <div class="quote-author">
+                    <span class="author-name">Lee Kuan Yew</span>
+                    <span class="author-context" id="quoteContext">1988 National Day Rally</span>
+                </div>
+                <div class="quote-actions">
+                    <button id="nextQuoteBtn" class="btn btn-primary">
+                        <span>✨ New Quote</span>
+                    </button>
+                    <button id="copyQuoteBtn" class="btn btn-secondary">
+                        <span>📋 Copy Quote</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Biography / Introduction Section -->
+        <section class="bio-section">
+            <h2 class="section-title">Biography & Journey</h2>
+            <div class="card bio-content">
+                <p>
+                    <strong>Lee Kuan Yew</strong> was born in Singapore in 1923. An exceptionally brilliant scholar, he survived the hardship of the Japanese Occupation during World War II before pursuing law at Fitzwilliam College, Cambridge, where he graduated with a rare Starred First-Class Honours.
+                </p>
+                <p>
+                    In 1954, he co-founded the People's Action Party (PAP) and became Singapore’s first Prime Minister in 1959 when the island achieved self-governance. Following a brief and turbulent merger with Malaysia, Singapore was expelled and thrust into sudden, unchosen independence on 9 August 1965.
+                </p>
+                <p>
+                    Confronted with high unemployment, severe housing shortages, and no natural resources, Lee and his founding team enacted radical policies: building a multi-ethnic national identity, world-class public housing (HDB), uncompromising anti-corruption standards (CPIB), and an export-driven open economy that successfully bridged Singapore "From Third World to First".
+                </p>
+
+                <!-- Milestone Highlights -->
+                <div class="bio-milestones">
+                    <div class="milestone-item">
+                        <div class="milestone-year">1959 – 1990</div>
+                        <div class="milestone-desc">First Prime Minister of Singapore (31 years of transformative governance)</div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-year">1965</div>
+                        <div class="milestone-desc">Led Singapore through sudden independence into sovereign statehood</div>
+                    </div>
+                    <div class="milestone-item">
+                        <div class="milestone-year">1990 – 2011</div>
+                        <div class="milestone-desc">Served as Senior Minister & Minister Mentor, guiding future leadership generations</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interesting Facts Section -->
+        <section class="facts-section">
+            <h2 class="section-title">Interesting Facts</h2>
+            <div class="facts-grid">
+                <div class="card fact-card">
+                    <div class="fact-icon">🌳</div>
+                    <h3 class="fact-title">The "Garden City" Vision</h3>
+                    <p class="fact-description">
+                        In 1963, he launched the nationwide Tree Planting Campaign. He believed green canopy and cleanliness were crucial signals to international investors of a disciplined, well-run nation.
+                    </p>
+                </div>
+
+                <div class="card fact-card">
+                    <div class="fact-icon">🗣️</div>
+                    <h3 class="fact-title">Bilingualism Policy</h3>
+                    <p class="fact-description">
+                        He made English the unifying working language for commerce and inter-racial cohesion, while mandating that every citizen learn their mother tongue to retain cultural heritage.
+                    </p>
+                </div>
+
+                <div class="card fact-card">
+                    <div class="fact-icon">🏃</div>
+                    <h3 class="fact-title">Daily Jogging Discipline</h3>
+                    <p class="fact-description">
+                        Renowned for extraordinary personal discipline, he maintained a strict daily regimen of brisk walking and running every evening well into his 80s to maintain mental and physical sharpness.
+                    </p>
+                </div>
+
+                <div class="card fact-card">
+                    <div class="fact-icon">✈️</div>
+                    <h3 class="fact-title">Bold Changi Airport Move</h3>
+                    <p class="fact-description">
+                        In 1975, he rejected foreign advice to expand the existing Paya Lebar airport and instead boldly moved Singapore's aviation hub to Changi, enabling decades of unconstrained expansion.
+                    </p>
+                </div>
+
+                <div class="card fact-card">
+                    <div class="fact-icon">⚖️</div>
+                    <h3 class="fact-title">Zero Tolerance on Corruption</h3>
+                    <p class="fact-description">
+                        He established an incorruptible civil service by empowering the CPIB and paying competitive market wages to public officials, making Singapore one of the least corrupt nations globally.
+                    </p>
+                </div>
+
+                <div class="card fact-card">
+                    <div class="fact-icon">🌏</div>
+                    <h3 class="fact-title">Counsel to World Leaders</h3>
+                    <p class="fact-description">
+                        He was sought after for candid geopolitical insights by multiple generations of global leaders, including US Presidents, Chinese leaders from Deng Xiaoping onwards, and European premiers.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast" role="alert">Quote copied to clipboard!</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Designed with tribute and respect for <strong>Lee Kuan Yew</strong> (1923 – 2015).</p>
+            <p style="margin-top: 0.35rem; font-size: 0.8rem;">Built with vanilla HTML, CSS, and JavaScript.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================================================
+         Vanilla JavaScript Logic
+         ========================================================================== -->
+    <script>
+        // 1. Curated Quotes Collection
+        const quotes = [
+            {
+                quote: "Even from my sick bed, even if you are going to lower me into the grave and I feel that something is going wrong, I will get up.",
+                context: "1988 National Day Rally speech at the Singapore Conference Hall"
+            },
+            {
+                quote: "Whoever governs Singapore must have that iron in him. Or give it up. This is not a game of cards! This is your life and mine!",
+                context: "1980 Rally speech at Fullerton Square"
+            },
+            {
+                quote: "I have no regrets. I have spent my life, so much of it, building up this country. There's nothing more that I need to do.",
+                context: "Reflections in 'One Man's View of the World' (2013)"
+            },
+            {
+                quote: "We have to live with the world as it is, not as we wish it should be.",
+                context: "Philosophy on Realpolitik and governance"
+            },
+            {
+                quote: "A nation is great not by its size alone. It is the will, the cohesion, the stamina, the discipline of its people and the quality of their leaders.",
+                context: "Speech to civil servants (1965)"
+            },
+            {
+                quote: "If you want to be popular all the time, you will fail as a leader. You must be prepared to take tough, unpopular decisions for the long-term good.",
+                context: "Interview on leadership principles"
+            },
+            {
+                quote: "We built Singapore from nothing. What we had was determination, discipline, and a willingness to work together.",
+                context: "Address on Singapore's economic journey"
+            }
+        ];
+
+        let currentQuoteIndex = 0;
+
+        // DOM Element Selectors
+        const quoteDisplay = document.getElementById("quoteDisplay");
+        const quoteContext = document.getElementById("quoteContext");
+        const nextQuoteBtn = document.getElementById("nextQuoteBtn");
+        const copyQuoteBtn = document.getElementById("copyQuoteBtn");
+        const themeToggleBtn = document.getElementById("themeToggleBtn");
+        const themeIcon = document.getElementById("themeIcon");
+        const themeText = document.getElementById("themeText");
+        const toast = document.getElementById("toast");
+        const celebrityPhoto = document.getElementById("celebrityPhoto");
+
+        // 2. Image Error Fallback Handler
+        celebrityPhoto.addEventListener("error", function() {
+            // Fallback in case of network restriction or offline mode
+            this.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Lee_Kuan_Yew.jpg/480px-Lee_Kuan_Yew.jpg";
+        });
+
+        // 3. Random Quote Generator Function
+        function displayNextQuote() {
+            let nextIndex;
+            // Prevent showing the exact same quote twice in a row
+            do {
+                nextIndex = Math.floor(Math.random() * quotes.length);
+            } while (nextIndex === currentQuoteIndex && quotes.length > 1);
+
+            currentQuoteIndex = nextIndex;
+            const item = quotes[currentQuoteIndex];
+
+            // Smooth transition animation
+            quoteDisplay.style.opacity = "0";
+            quoteDisplay.style.transform = "translateY(5px)";
+
+            setTimeout(() => {
+                quoteDisplay.textContent = `"${item.quote}"`;
+                quoteContext.textContent = item.context;
+                quoteDisplay.style.opacity = "1";
+                quoteDisplay.style.transform = "translateY(0)";
+            }, 200);
+        }
+
+        nextQuoteBtn.addEventListener("click", displayNextQuote);
+
+        // 4. Copy to Clipboard Functionality
+        copyQuoteBtn.addEventListener("click", () => {
+            const fullText = `${quoteDisplay.textContent} — Lee Kuan Yew (${quoteContext.textContent})`;
+            navigator.clipboard.writeText(fullText).then(() => {
+                showToast("Quote copied to clipboard!");
+            }).catch(() => {
+                showToast("Copied to clipboard!");
+            });
+        });
+
+        function showToast(message) {
+            toast.textContent = message;
+            toast.classList.add("show");
+            setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+
+        // 5. Dark / Light Theme Switcher
+        function updateTheme(theme) {
+            document.documentElement.setAttribute("data-theme", theme);
+            localStorage.setItem("fanpage_theme", theme);
+            if (theme === "dark") {
+                themeIcon.textContent = "☀️";
+                themeText.textContent = "Light Mode";
+            } else {
+                themeIcon.textContent = "🌙";
+                themeText.textContent = "Dark Mode";
+            }
+        }
+
+        themeToggleBtn.addEventListener("click", () => {
+            const currentTheme = document.documentElement.getAttribute("data-theme") || "light";
+            const newTheme = currentTheme === "dark" ? "light" : "dark";
+            updateTheme(newTheme);
+        });
+
+        // Initialize Theme from localStorage or system preference
+        const savedTheme = localStorage.getItem("fanpage_theme");
+        if (savedTheme) {
+            updateTheme(savedTheme);
+        } else if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            updateTheme("dark");
+        }
+    </script>
+</body>
+</html>
