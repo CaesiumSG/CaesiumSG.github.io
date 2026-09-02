@@ -1,0 +1,92 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: aliceblue;
+}
+
+.container {
+    margin: auto;
+    text-align: center;
+    max-width: 800px;
+}
+
+h1 {
+    color: rgb(253, 115, 138);
+}
+
+.tagline {
+    font-style: italic;
+    color: grey;
+    font-weight: lighter;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.about h2 {
+    margin-bottom: 20px;
+}
+
+.about, .action {
+    padding: 10px;
+    text-align: left;
+
+}
+
+.about p {
+    line-height: 1.2;
+    margin-bottom: 10px;
+}
+
+img {
+    width: 300px;
+    background-color: white;
+    border: 5px solid black;
+    border-radius: 50px;
+}
+
+.buy-tickets, .make-donation {
+    padding: 5px 10px;
+    margin: 15px;
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    margin-top: 0;
+    display: inline-block;
+    gap: 15px
+}
+
+
+.buy-tickets {
+    background-color: green;
+    box-shadow: 0px 4px 10px 0px rgba(19, 90, 170, 0.3);
+}
+
+.make-donation {
+    background-color: blue;
+    box-shadow: 0px 4px 10px 0px rgba(135, 19, 170, 0.3);
+}
+
+
+.buy-tickets:hover {
+    background-color: rgb(0, 76, 0);
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.make-donation:hover {
+    background-color: rgb(0, 0, 82);
+    transform: translateY(-5px);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+footer p {
+    font-size: 0.5em;
+    color: grey;
+    border-top: 0.5px solid grey;
+    padding: 10px
+}
+
